@@ -1,22 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { globalStyles } from '../styles/global';
 
-export default function ReviewDetail() {
-    return (
-        <View style={styles.container}>
-            <Text>ReviewDetail Screen</Text>
-        </View>
-    )
-}
+export default function ReviewDetail({ navigation }) {
 
+  const pressHandler = () => {
+    navigation.goBack();
+  }
+
+  return (
+    <View style={globalStyles.container}>
+      <Text>{ navigation.getParam('title') }</Text>
+      <Text>{ navigation.getParam('body') }</Text>
+      <Text>{ navigation.getParam('rating') }</Text>
+      <Button title="back to home" onPress={pressHandler} />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
 });
